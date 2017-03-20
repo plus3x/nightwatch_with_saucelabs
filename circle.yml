@@ -1,0 +1,3 @@
+test:
+  override:
+    - SAUCE_USERNAME=$SAUCE_USERNAME SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY node_modules/nightwatch/bin/nightwatch --env chrome
