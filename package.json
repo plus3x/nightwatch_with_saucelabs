@@ -1,0 +1,11 @@
+{
+  "name": "nightwatch_with_soucelabs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:plus3x/nightwatch_with_soucelabs.git",
+  "author": "Vladislav Petrov <electronicchest@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "nightwatch": "^0.9.13"
+  }
+}
