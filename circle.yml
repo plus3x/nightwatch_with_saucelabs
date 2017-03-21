@@ -1,3 +1,16 @@
+dependencies:
+  post:
+    - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
+    - tar -xzf sc-latest-linux.tar.gz
+
 test:
   override:
-    - SAUCE_USERNAME=$SAUCE_USERNAME SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY node_modules/nightwatch/bin/nightwatch --env chrome
+    - export SAUCE_TUNNEL="CIRCLECI_$CIRCLE_SHA1_$CIRCLE_NODE_INDEX"
+    - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY -i $SAUCE_TUNNEL --readyfile ~/sauce_is_ready:
+        background: true
+    # Wait for tunnel to be ready
+    - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
+    # Run selenium tests
+    - node_modules/nightwatch/bin/nightwatch --env chrome
+  post:
+    - killall --wait sc  # wait for Sauce Connect to close the tunnel
