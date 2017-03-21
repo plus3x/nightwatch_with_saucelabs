@@ -32,7 +32,6 @@
       "access_key" : "${SAUCE_ACCESS_KEY}",
 
       "desiredCapabilities": {
-        "tunnelIdentifier": "${SAUCE_TUNNEL}",
         "browserName": "firefox",
         "marionette": true
       }
