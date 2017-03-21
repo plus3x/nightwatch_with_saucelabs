@@ -50,12 +50,6 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome'
       }
-    },
-
-    chrome_1: {
-      desiredCapabilities: {
-        browserName: 'chrome'
-      }
     }
   }
 };
