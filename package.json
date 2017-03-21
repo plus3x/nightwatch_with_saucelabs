@@ -5,7 +5,13 @@
   "repository": "git@github.com:plus3x/nightwatch_with_soucelabs.git",
   "author": "Vladislav Petrov <electronicchest@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "postinstall": "node nightwatch.conf.js",
+    "test": "./node_modules/nightwatch/bin/nightwatch --config nightwatch.conf.js --env chrome",
+    "test:sauce": "./node_modules/nightwatch/bin/nightwatch --config nightwatch.saucelabs.js --env chrome,firefox"
+  },
   "dependencies": {
-    "nightwatch": "^0.9.13"
+    "nightwatch": "^0.9.13",
+    "selenium-download": "^2.0.9"
   }
 }
