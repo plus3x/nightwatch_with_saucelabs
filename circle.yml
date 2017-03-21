@@ -1,16 +1,25 @@
+machine:
+  node:
+    version: 6.9.5
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+
 dependencies:
   post:
     - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
     - tar -xzf sc-latest-linux.tar.gz
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
 
 test:
   override:
-    - export SAUCE_TUNNEL="CIRCLECI_$CIRCLE_SHA1_$CIRCLE_NODE_INDEX"
-    - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY -i $SAUCE_TUNNEL --readyfile ~/sauce_is_ready:
+    - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready:
         background: true
     # Wait for tunnel to be ready
     - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
     # Run selenium tests
-    - node_modules/nightwatch/bin/nightwatch --env chrome
+    - yarn test:sauce
   post:
     - killall --wait sc  # wait for Sauce Connect to close the tunnel
