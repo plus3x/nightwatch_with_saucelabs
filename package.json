@@ -8,7 +8,7 @@
   "scripts": {
     "postinstall": "node nightwatch.conf.js",
     "test": "./node_modules/nightwatch/bin/nightwatch --config nightwatch.conf.js --env chrome",
-    "test:sauce": "ALL_ENVS=$(node -e 'var nw = require('./nightwatch.saucelabs.js'); console.log(Object.keys(nw.test_settings).join(','));') ./node_modules/nightwatch/bin/nightwatch --config nightwatch.saucelabs.js --env ALL_ENV"
+    "test:sauce": "ALL_ENVS=$(node -e \"var nw = require('./nightwatch.saucelabs.js'); console.log(Object.keys(nw.test_settings).join(','));\") ./node_modules/nightwatch/bin/nightwatch --config nightwatch.saucelabs.js --env ALL_ENV"
   },
   "dependencies": {
     "nightwatch": "^0.9.13",
