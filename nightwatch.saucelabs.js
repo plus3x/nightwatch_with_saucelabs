@@ -6,17 +6,6 @@ module.exports = {
   page_objects_path: '',
   globals_path: '',
 
-  selenium: {
-    start_process: false,
-    server_path: '',
-    log_path: '',
-    port: 4444,
-    cli_args: {
-      'webdriver.chrome.driver': '',
-      'webdriver.gecko.driver': ''
-    }
-  },
-
   test_settings: {
     default: {
       launch_url: 'https://saucelabs.github.io/training-test-page',
