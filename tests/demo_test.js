@@ -3,6 +3,6 @@ module.exports = {
     browser
       .url(browser.launchUrl)
       .waitForElementVisible('body', 1000)
-      .end();
+      .end()
   }
-};
+}
