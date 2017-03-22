@@ -16,12 +16,12 @@ module.exports = {
         enabled: false,
         path: ''
       },
-      username : '${SAUCE_USERNAME}',
-      access_key : '${SAUCE_ACCESS_KEY}',
+      username: process.env.SAUCE_USERNAME,
+      access_key: process.env.SAUCE_ACCESS_KEY,
 
       desiredCapabilities: {
         build: 'build-' + '${CIRCLE_SHA1}',
-        tunnelIdentifier: '${SAUCE_TUNNEL}',
+        tunnelIdentifier: process.env.SAUCE_TUNNEL,
         public: 'public',
         passed: 'true'
       }
@@ -30,12 +30,6 @@ module.exports = {
     chrome: {
       desiredCapabilities: {
         browserName: 'chrome'
-      }
-    },
-
-    firefox: {
-      desiredCapabilities: {
-        browserName: 'firefox'
       }
     }
   }
