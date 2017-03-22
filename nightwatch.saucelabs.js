@@ -57,9 +57,6 @@ module.exports = {
     win_8_1_chrome_56_0:      desired_capabilities( 'Windows 8.1',            'chrome', '56.0'),
     win_8_1_chrome_55_0:      desired_capabilities( 'Windows 8.1',            'chrome', '55.0'),
     win_8_1_firefox_51_0:     desired_capabilities( 'Windows 8.1',           'firefox', '51.0'),
-    win_8_1_firefox_50_0:     desired_capabilities( 'Windows 8.1',           'firefox', '50.0'),
-    win_8_1_ie_11_103:        desired_capabilities( 'Windows 8.1', 'internet explorer', '11.103'),
-    win_8_1_edge_14_14393:    desired_capabilities( 'Windows 8.1',     'MicrosoftEdge', '14.14393'),
-    win_8_1_edge_13_10586:    desired_capabilities( 'Windows 8.1',     'MicrosoftEdge', '13.10586')
+    win_8_1_firefox_50_0:     desired_capabilities( 'Windows 8.1',           'firefox', '50.0')
   }
 }
