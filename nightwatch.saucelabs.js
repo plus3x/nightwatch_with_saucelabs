@@ -20,8 +20,7 @@ module.exports = {
       access_key: process.env.SAUCE_ACCESS_KEY,
 
       desiredCapabilities: {
-        build: 'build-' + '${CIRCLE_SHA1}',
-        tunnelIdentifier: process.env.SAUCE_TUNNEL,
+        build: 'build-${CIRCLE_BUILD_NUM}-${CIRCLE_SHA1}',
         public: 'public',
         passed: 'true'
       }
@@ -30,6 +29,12 @@ module.exports = {
     chrome: {
       desiredCapabilities: {
         browserName: 'chrome'
+      }
+    },
+
+    firefox: {
+      desiredCapabilities: {
+        browserName: 'firefox'
       }
     }
   }
