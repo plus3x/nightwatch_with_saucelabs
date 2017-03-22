@@ -19,9 +19,9 @@ module.exports = {
 
   test_settings: {
     default: {
-      launch_url: 'https://google.com',
-      selenium_port : 80,
-      selenium_host : 'ondemand.saucelabs.com',
+      launch_url: 'https://saucelabs.github.io/training-test-page',
+      selenium_port: 80,
+      selenium_host: 'ondemand.saucelabs.com',
       silent: true,
       screenshots: {
         enabled: false,

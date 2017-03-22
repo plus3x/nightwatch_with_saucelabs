@@ -24,9 +24,9 @@ module.exports = {
 
   test_settings: {
     default: {
-      launch_url: 'https://google.com',
-      selenium_port : 4444,
-      selenium_host : 'localhost',
+      launch_url: 'https://saucelabs.github.io/training-test-page',
+      selenium_port: 4444,
+      selenium_host: 'localhost',
       silent: true,
       test_workers: {
         enabled: true,
