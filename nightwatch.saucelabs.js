@@ -36,7 +36,6 @@ module.exports = {
 
       desiredCapabilities: {
         build: 'build-${CIRCLE_BUILD_NUM}-${CIRCLE_SHA1}',
-        tunnelIdentifier: process.env.SAUCE_TUNNEL,
         public: 'public'
       },
 
