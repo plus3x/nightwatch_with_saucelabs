@@ -17,6 +17,5 @@ test:
     # Run selenium tests
     - yarn test:sauce
   post:
-    - mkdir $CIRCLE_TEST_REPORTS/reports
     - ./node_modules/.bin/nightwatch-html-reporter --report-dir $CIRCLE_TEST_REPORTS/reports --output report.html --browser false
     - killall --wait sc  # wait for Sauce Connect to close the tunnel
