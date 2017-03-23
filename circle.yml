@@ -10,7 +10,8 @@ dependencies:
 test:
   override:
     - mkdir logs
-    - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready --logfile $CIRCLE_TEST_REPORTS/logs/sauce_connect.log:
+    - export SAUCE_TUNNEL="circleci-${CIRCLE_BUILD_NUM}-${CIRCLE_NODE_INDEX}"
+    - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --tunnel-identifier $SAUCE_TUNNEL --readyfile ~/sauce_is_ready --logfile $CIRCLE_TEST_REPORTS/logs/sauce_connect.log:
         background: true
     # Wait for tunnel to be ready
     - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
