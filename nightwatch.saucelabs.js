@@ -15,7 +15,7 @@ function desired_capabilities(platform, browser, version, env) {
 
 module.exports = {
   src_folders: ['tests'],
-  output_folder: 'reports',
+  output_folder: (process.env.CIRCLE_TEST_REPORTS ? '${CIRCLE_TEST_REPORTS}/reports' : 'reports'),
   globals_path: 'lib/globals',
 
   test_settings: {
