@@ -16,9 +16,6 @@ function desired_capabilities(platform, browser, version, env) {
 module.exports = {
   src_folders: ['tests'],
   output_folder: 'reports',
-  custom_commands_path: '',
-  custom_assertions_path: '',
-  page_objects_path: '',
   globals_path: 'lib/globals',
 
   test_settings: {
@@ -27,10 +24,6 @@ module.exports = {
       selenium_port: 80,
       selenium_host: 'ondemand.saucelabs.com',
       silent: true,
-      screenshots: {
-        enabled: false,
-        path: ''
-      },
       username: process.env.SAUCE_USERNAME,
       access_key: process.env.SAUCE_ACCESS_KEY,
 
@@ -65,6 +58,13 @@ module.exports = {
     win_8_1_chrome_56_0:      desired_capabilities( 'Windows 8.1',           'chrome', '56.0', 'win_8_1_chrome_56_0'),
     win_8_1_chrome_55_0:      desired_capabilities( 'Windows 8.1',           'chrome', '55.0', 'win_8_1_chrome_55_0'),
     win_8_1_firefox_51_0:     desired_capabilities( 'Windows 8.1',          'firefox', '51.0', 'win_8_1_firefox_51_0'),
-    win_8_1_firefox_50_0:     desired_capabilities( 'Windows 8.1',          'firefox', '50.0', 'win_8_1_firefox_50_0')
+    win_8_1_firefox_50_0:     desired_capabilities( 'Windows 8.1',          'firefox', '50.0', 'win_8_1_firefox_50_0'),
+
+    linux_chrome_56_0:        desired_capabilities(       'Linux',            'chrome', '56.0', 'linux_chrome_56_0'),
+    linux_chrome_55_0:        desired_capabilities(       'Linux',            'chrome', '55.0', 'linux_chrome_55_0'),
+    linux_firefox_51_0:       desired_capabilities(       'Linux',           'firefox', '51.0', 'linux_firefox_51_0'),
+    linux_firefox_50_0:       desired_capabilities(       'Linux',           'firefox', '50.0', 'linux_firefox_50_0'),
+    linux_opera_12_15:        desired_capabilities(       'Linux',             'opera', '12.15', 'linux_opera_12_15'),
+    linux_opera_12_15:        desired_capabilities(       'Linux',             'opera', '12.15', 'linux_opera_12_15')
   }
 }
