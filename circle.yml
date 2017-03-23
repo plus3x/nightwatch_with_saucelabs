@@ -11,6 +11,7 @@ test:
   override:
     - mkdir logs
     - export SAUCE_TUNNEL="circleci-${CIRCLE_BUILD_NUM}-${CIRCLE_NODE_INDEX}"
+    - echo $SAUCE_TUNNEL
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --tunnel-identifier $SAUCE_TUNNEL --readyfile ~/sauce_is_ready --logfile $CIRCLE_TEST_REPORTS/logs/sauce_connect.log --reconnect 1:
         background: true
     # Wait for tunnel to be ready
