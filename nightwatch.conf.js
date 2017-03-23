@@ -1,3 +1,5 @@
+'use strict'
+
 const SCREENSHOT_PATH = './screenshots/'
 const BINPATH = 'node_modules/nightwatch/bin/'
 
@@ -7,7 +9,7 @@ module.exports = {
   custom_commands_path: '',
   custom_assertions_path: '',
   page_objects_path: '',
-  globals_path: '',
+  globals_path: 'lib/globals',
 
   selenium: {
     start_process: true,
@@ -28,10 +30,10 @@ module.exports = {
       selenium_port: 4444,
       selenium_host: 'localhost',
       silent: true,
-      test_workers: {
-        enabled: true,
-        workers: 'auto'
-      },
+      // test_workers: { // Fucking hell unreadable errors
+      //   enabled: true,
+      //   workers: 'auto'
+      // },
       screenshots: {
         enabled: true, // save screenshots to this directory (excluded by .gitignore)
         path: SCREENSHOT_PATH,
@@ -46,7 +48,7 @@ module.exports = {
       }
     },
 
-    chrome: {
+    blyat: {
       desiredCapabilities: {
         browserName: 'chrome'
       }
@@ -61,16 +63,16 @@ module.exports = {
  /the following code checks for the existence of `selenium.jar` before trying to run our tests.
  */
 
-require('fs').stat(BINPATH + 'selenium.jar', function (err, stat) { // got it?
+require('fs').stat(BINPATH + 'selenium.jar', (err, stat) => { // got it?
   if (err || !stat || stat.size < 1) {
-    require('selenium-download').ensure(BINPATH, function(error) {
+    require('selenium-download').ensure(BINPATH, (error) => {
       if (error) throw new Error(error) // no point continuing so exit!
       console.log('✔ Selenium & Chromedriver downloaded to:', BINPATH)
     })
   }
 })
 
-function padLeft (count) { // theregister.co.uk/2016/03/23/npm_left_pad_chaos/
+function padLeft(count) { // theregister.co.uk/2016/03/23/npm_left_pad_chaos/
   return count < 10 ? '0' + count : count.toString()
 }
 
@@ -82,7 +84,7 @@ var FILECOUNT = 0 // 'global' screenshot file count
  * While we're at it, we are adding some meta-data to the filename, specifically
  * the Platform/Browser where the test was run and the test (file) name.
  */
-function imgpath (browser) {
+function imgpath(browser) {
   var a = browser.options.desiredCapabilities
   var meta = [a.platform]
   meta.push(a.browserName ? a.browserName : 'any')

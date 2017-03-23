@@ -1,5 +1,16 @@
+'use strict'
+
 module.exports = {
-  'Demo test' : function (browser) {
+  beforeEach(browser) {
+    browser.globals.setupBeforeEach(browser)
+  },
+
+  afterEach(browser, done) {
+    browser.globals.setupAfterEach()
+    done()
+  },
+
+  'Demo test' : browser => {
     browser
       .url(browser.launchUrl)
       .waitForElementVisible('body', 1000)
