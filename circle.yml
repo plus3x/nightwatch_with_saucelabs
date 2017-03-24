@@ -9,7 +9,7 @@ dependencies:
 
 test:
   override:
-    - mkdir $CIRCLE_TEST_REPORTS/logs
+    - mkdir $CIRCLE_ARTIFACTS/logs
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready --logfile $CIRCLE_ARTIFACTS/logs/sauce_connect.log --reconnect 1:
         background: true
     # Wait for tunnel to be ready
