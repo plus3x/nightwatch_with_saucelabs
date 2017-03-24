@@ -11,7 +11,7 @@
     "test:sauce": "./node_modules/nightwatch/bin/nightwatch --config nightwatch.saucelabs.js --env $(node -e 'var nw = require(\"./nightwatch.saucelabs.js\"); console.log(Object.keys(nw.test_settings).splice(1).join(\",\"))')"
   },
   "dependencies": {
-    "nightwatch": "^0.9.13",
+    "nightwatch": "^0.9.14",
     "nightwatch-html-reporter": "^2.0.0",
     "selenium-download": "^2.0.9",
     "saucelabs": "^1.4.0"

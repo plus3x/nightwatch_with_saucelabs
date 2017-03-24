@@ -3,7 +3,7 @@
 const SCREENSHOT_PATH = './screenshots/'
 const BINPATH = 'node_modules/nightwatch/bin/'
 
-module.exports = {
+let config = {
   src_folders: ['tests'],
   output_folder: 'reports',
   custom_commands_path: '',
@@ -52,9 +52,26 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome'
       }
+    },
+
+    chrome_paralel: {
+      desiredCapabilities: {
+        browserName: 'chrome'
+      }
     }
   }
 }
+
+Object
+  .keys(config.test_settings)
+  .filter(name => name !== 'default')
+  .forEach(name => {
+    // Nightwatch uses 'browserName_version_platform_testmodule' to name reports
+    // So create a directory per env to workaround this
+    config.test_settings[name].output_folder = `${config.output_folder}/${name}`;
+  })
+
+module.exports = config
 
 /**
  * selenium-download does exactly what it's name suggests;
