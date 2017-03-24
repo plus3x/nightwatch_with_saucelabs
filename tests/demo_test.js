@@ -33,7 +33,7 @@ module.exports = {
             fs.writeFile(file, text, (error) => { if (error) throw error })
           })
         }
-      }, 100)
+      }, 500)
     })
   },
 
