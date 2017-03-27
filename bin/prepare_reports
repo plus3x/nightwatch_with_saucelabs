@@ -1,0 +1,13 @@
+#!/bin/sh
+
+REPORTS_FOLDER=$1
+
+pushd $REPORTS_FOLDER
+
+for dir in *; do
+  if [ -d "${dir}" ]; then
+    sed -i '' "s/package=\"[^\"]*\"/package=\"${dir}\"/g" ${dir}/*.xml
+  fi
+done
+
+popd

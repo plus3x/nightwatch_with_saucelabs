@@ -12,7 +12,7 @@ function desired_capabilities(platform, browser, version) {
 
 let config = {
   src_folders: ['tests'],
-  output_folder: (process.env.CIRCLE_ARTIFACTS ? '${CIRCLE_ARTIFACTS}/reports' : 'reports'),
+  output_folder: (process.env.CIRCLE_TEST_REPORTS ? '${CIRCLE_TEST_REPORTS}/reports' : 'reports'),
   globals_path: 'lib/globals',
 
   test_settings: {
