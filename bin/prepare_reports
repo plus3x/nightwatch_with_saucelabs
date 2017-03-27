@@ -6,7 +6,14 @@ pushd $REPORTS_FOLDER
 
 for dir in *; do
   if [ -d "${dir}" ]; then
-    sed -i '' "s/package=\"[^\"]*\"/package=\"${dir}\"/g" ${dir}/*.xml
+    case "$(uname -s)" in
+    Darwin)
+      sed -i '' "s/package=\"[^\"]*\"/package=\"${dir}\"/g" ${dir}/*.xml
+      ;;
+    Linux)
+      sed -i "s/package=\"[^\"]*\"/package=\"${dir}\"/g" ${dir}/*.xml
+      ;;
+    esac
   fi
 done
 
