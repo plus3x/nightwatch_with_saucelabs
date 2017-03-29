@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'rexml/document'
+
+reports_path = ARGV[0]
+html_report_path = "#{reports_path}/generatedReport.html"
+file = File.read(html_report_path)
+
+# Fix element ending in nightwatch-html-report
+file.sub!('<meta charset="utf-8">', '<meta charset="utf-8"/>')
+
+doc = REXML::Document.new(file)
+
+raise "Report empty or can't be readed" unless doc.any?
+
+Dir["#{reports_path}/*"].each do |dir|
+  next unless File.directory? dir
+
+  env = dir.split('/')[-1]
+  artifacts_path = "#{dir}/artifacts.html"
+  artifacts = "
+      <div class=\"artifacts\">
+        <span>Artifacts: </span>
+        #{File.read(artifacts_path)}
+      </div>
+  "
+
+  REXML::XPath.each(doc, "//div[contains(@class, \"package\")]") do |testsuite|
+    next if testsuite.elements['h2'].text !~ /#{env}$/
+
+    testsuite.add_text artifacts
+  end
+end
+
+# Fix REXML node optimizing
+output = doc.to_s.sub('.js\'/>', '.js\'></script>').sub('script\'/>', 'script\'></script>')
+
+IO.write html_report_path, output

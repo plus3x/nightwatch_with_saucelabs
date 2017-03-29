@@ -62,7 +62,6 @@ let config = {
     linux_chrome_47_0:        desired_capabilities(       'Linux',           'chrome', '47.0'),
     linux_firefox_45_0:       desired_capabilities(       'Linux',          'firefox', '45.0'),
     linux_firefox_44_0:       desired_capabilities(       'Linux',          'firefox', '44.0'),
-    linux_opera_12_15:        desired_capabilities(       'Linux',            'opera', '12.15'),
     linux_opera_12_15:        desired_capabilities(       'Linux',            'opera', '12.15')
   }
 }

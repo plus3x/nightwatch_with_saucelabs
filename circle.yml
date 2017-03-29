@@ -19,4 +19,5 @@ test:
   post:
     - bin/prepare_reports $CIRCLE_TEST_REPORTS/reports
     - node_modules/.bin/nightwatch-html-reporter --report-dir $CIRCLE_TEST_REPORTS/reports --browser false
+    - bin/add_artifacts $CIRCLE_TEST_REPORTS/reports
     - killall --wait sc  # wait for Sauce Connect to close the tunnel
